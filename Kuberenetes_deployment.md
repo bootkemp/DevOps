@@ -1,3 +1,5 @@
+Reference: https://kubernetes.io/docs/tutorials/kubernetes-basics/explore/explore-intro/
+
 Using the gcloud command line tool, install the Kubernetes command-line tool. kubectl is used to communicate with Kubernetes, which is the cluster orchestration system of GKE clusters:
 
 	gcloud components install kubectl
@@ -42,22 +44,19 @@ To see the Pod created by the Deployment, run the following command:
 	
 Expose your application to the Internet and setup load balancer
 
-By default, the containers you run on GKE are not accessible from the Internet, because they do not have external IP addresses. 
-You must explicitly expose your application to traffic from the Internet, run the following command:
+By default, the containers on GKE are not accessible from the Internet, because they do not have external IP addresses. 
+We need to explicitly expose our application:
 
 	
 	kubectl expose deployment car-showroom --type=LoadBalancer --port 80 --target-port 8050
 
 
-The kubectl expose command above creates a Service resource, which provides networking and IP support to your application's Pods. 
+This command above creates a Service resource, which provides networking and IP support to your application's Pods.
+
 GKE creates an external IP and a Load Balancer (subject to billing) for your application.
 
-The --port flag specifies the port number configured on the Load Balancer, and the --target-port 
-flag specifies the port number that is used by the Pod created by the kubectl run command from the previous step
+To inspect the service:
 
-
-If you want to find out the external IP that GKE provisioned for your application, you can inspect the Service 
-with the the following command:
 
 	kubectl get service
 	
