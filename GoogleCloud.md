@@ -1,39 +1,48 @@
-1. Make sure that Container Registry is enabled. Billing is required.
+Make sure that Container Registry is enabled. Billing is required.
 
-2. Configured Docker to use gcloud as a credential helper, or are using another authentication method. To use gcloud as the credential helper, run the command:
+Configured Docker to use gcloud as a credential helper, or are using another authentication method. To use gcloud as the credential helper, run the command:
 
 	gcloud auth configure-docker
 	
-3. Tag the local image with the registry name by using the command:
+
+Tag the local image with the registry name by using the command:
 
 	docker tag [SOURCE_IMAGE] [HOSTNAME]/[PROJECT-ID]/[IMAGE]
 	
+   Example:
 	
 	docker tag bootkemp/car-showroom asia.gcr.io/apps-bc4f3/car-showroom
 	
-4. Verify Tagging:
+Verify Tagging:
 
 
 	docker image ls
 
-REPOSITORY                           TAG                 IMAGE ID            CREATED             SIZE
-bootkemp/car-showroom                latest              9a831050ba04        14 hours ago        127MB
-asia.gcr.io/apps-bc4f3/car-showroom   latest              9a831050ba04        14 hours ago        127MB
+   Example:
+   
+	REPOSITORY                           TAG                 IMAGE ID            CREATED             SIZE
+	bootkemp/car-showroom                latest              9a831050ba04        14 hours ago        127MB
+	asia.gcr.io/apps-bc4f3/car-showroom   latest              9a831050ba04        14 hours ago        127MB
 
-5. Push the tagged image to Container Registry
+
+Push the tagged image to Container Registry
 
 	docker push asia.gcr.io/apps-bc4f3/car-showroom
 	
-6. Now go to the "Storage" in the GCP Console.
+
+Now go to the "Storage" in the GCP Console.
 
 
-7. Click the artifacts.[PROJECT-ID].appspot.com or [REGION].artifacts.[PROJECT-ID].appspot.com bucket's link.
+Click the artifacts.[PROJECT-ID].appspot.com or [REGION].artifacts.[PROJECT-ID].appspot.com bucket's link.
 
-8. Select the Permissions tab.
 
-9. Click Add members. provide your gmail id.
+Select the Permissions tab.
 
-10. From the Select a role drop-down menu's Storage category, select Storage Object Viewer. Click Add.
+
+Click Add members. provide your gmail id.
+
+
+From the Select a role drop-down menu's Storage category, select Storage Object Viewer. Click Add.
 
     Using gsutil:
     
@@ -42,7 +51,8 @@ asia.gcr.io/apps-bc4f3/car-showroom   latest              9a831050ba04        14
     
     link: https://cloud.google.com/container-registry/docs/access-control
     
-11. Run gcloud container images list-tags to view the image's tag(s) and automatically-generated digest:
+
+Run gcloud container images list-tags to view the image's tag(s) and automatically-generated digest:
 
 	gcloud container images list-tags [HOSTNAME]/[PROJECT-ID]/[IMAGE]
 
@@ -57,21 +67,24 @@ asia.gcr.io/apps-bc4f3/car-showroom   latest              9a831050ba04        14
 	34f194bb85ea  latest  2019-06-06T20:34:45
 
 
-12. To pull from Container Registry, use the command:
+To pull from Container Registry, use the command:
 
 	docker pull [HOSTNAME]/[PROJECT-ID]/[IMAGE]:[TAG]
 	
-13. To run the docker container 
 
-	To test your container image using your local Docker engine, run the following command:
+
+
+To test your container image using your local Docker engine, run the following command:
 
 	docker run --rm -p 8000:8050 asia.gcr.io/apps-bc4f3/car-showroom
 
-13. Clean up
 
-	To avoid incurring charges to your GCP account for the resources used in this quickstart:
 
-	Run the following command to delete the Docker image from Container Registry.
+Clean up:
+
+To avoid incurring charges to your GCP account for the resources used in this quickstart:
+
+Run the following command to delete the Docker image from Container Registry.
 
 	gcloud container images delete asia.gcr.io/apps-bc4f3/car-showroom --force-delete-tags
 
