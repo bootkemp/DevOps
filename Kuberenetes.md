@@ -14,7 +14,7 @@ Set project id and Zone:
 
 Run the following command to create a two-node cluster named hello-cluster:
 
-	gcloud container clusters create hello-cluster --num-nodes=2
+	gcloud container clusters create car-showroom-cluster --num-nodes=2
 	
 To  check working instances:
 
@@ -28,6 +28,12 @@ To resize a cluster's node pools, run the following command:
     
     	gcloud container clusters resize hello-cluster --num-nodes 2
     
-Run the following command to deploy your application, listening on port 8080:
+Run the following command to deploy your application, listening on port 8050:
 
-	kubectl run car-showroom --image=asia.gcr.io/apps-bc4f3/car-showroom --port 8000
+	kubectl run car-showroom --image=asia.gcr.io/apps-bc4f3/car-showroom --port 8050
+	
+
+To see the Pod created by the Deployment, run the following command:
+
+	kubectl get pods
+	
