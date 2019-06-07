@@ -76,7 +76,7 @@ To pull from Container Registry, use the command:
 
 To test your container image using your local Docker engine, run the following command:
 
-	docker run --rm -p 8000:8050 asia.gcr.io/apps-bc4f3/car-showroom
+	docker run --rm -p 8050:8050 asia.gcr.io/apps-bc4f3/car-showroom
 
 
 
