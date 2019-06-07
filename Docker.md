@@ -13,7 +13,7 @@ Now You can now see the list of all the docker images on your system using the f
 	
 To Start Docker:
 
-	docker run -p 8080:8080 -t bootkemp/car-showroom
+	docker run -p 8000:8080 -t bootkemp/car-showroom
 	
 To Check Docker Processes:
 
